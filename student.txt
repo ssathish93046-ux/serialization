@@ -1,0 +1,29 @@
+ public class BinaryWriterDemo
+  {
+      public static void Main()
+      {
+          FileStream fs = System.IO.File.Open("student.txt",FileMode.Create,FileAccess.Write);
+          System.IO.BinaryWriter bw;
+          bw = new BinaryWriter(fs);
+
+          bw.Write(1001);
+          bw.Write("ravi");
+          bw.Write(4500.555);
+
+          bw.Close(); 
+          fs.Close();
+
+          fs = System.IO.File.Open("student.txt",FileMode.Open,FileAccess.Read);
+          System.IO.BinaryReader br;
+          br = new BinaryReader(fs);
+
+          System.Console.WriteLine(br.ReadInt32());
+          System.Console.WriteLine(br.ReadString());
+          System.Console.WriteLine(br.ReadDouble());
+
+          br.Close();
+          fs.Close();
+
+
+      }
+  }
